@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 
 import { rhythm, scale } from '../utils/typography';
 
 const Layout = ({ location, title, children }) => {
-    const rootPath = `${__PATH_PREFIX__}/`;
+    const rootPath = withPrefix('/');
     let header;
 
     if (location.pathname === rootPath) {
