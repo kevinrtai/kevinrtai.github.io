@@ -3,7 +3,13 @@ import { Link, withPrefix } from 'gatsby';
 
 import { rhythm, scale } from '../utils/typography';
 
-const Layout = ({ location, title, children }) => {
+interface Props {
+    location: Location;
+    title: string;
+    children: React.ReactNode;
+}
+
+const Layout = ({ location, title, children }: Props) => {
     const rootPath = withPrefix('/');
     let header;
 

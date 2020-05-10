@@ -6,7 +6,40 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+interface GatsbyNode {
+    id: number;
+    excerpt: string;
+    html: string;
+    frontmatter: {
+        title: string;
+        date: string;
+        description: string;
+    };
+    fields: {
+        slug: string;
+    };
+}
+
+interface Data {
+    site: {
+        siteMetadata: {
+            title: string;
+        };
+    };
+    markdownRemark: GatsbyNode;
+}
+
+interface Props {
+    data: Data;
+    pageContext: {
+        slug: string;
+        previous: GatsbyNode;
+        next: GatsbyNode;
+    };
+    location: Location;
+}
+
+const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata.title;
     const { previous, next } = pageContext;
